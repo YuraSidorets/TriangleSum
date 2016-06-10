@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Triangle
 {
@@ -18,27 +16,33 @@ namespace Triangle
             _file = new StreamReader(filename);
         }
 
+        /// <summary>
+        /// Find max sum in triangle
+        /// </summary>
+        /// <param name="tempIndx"></param>
         public void Solve(int tempIndx)
         {
-
+            
             List<int> currentNums = GetData();
+
             if (currentNums.Count == 0)
             {
                return; 
             }
 
+            //list of values near current in line
             List<int> nextValues = new List<int> { 0, 0, 0 };
             if (tempIndx - 1 > 0)
             {
-
-                nextValues[0] = (currentNums[tempIndx - 1]);
+                nextValues[0] = currentNums[tempIndx - 1];
             }
             if (tempIndx + 1 < currentNums.Count)
             {
-                nextValues[1] = (currentNums[tempIndx + 1]);
+                nextValues[1] = currentNums[tempIndx + 1];
             }
-            nextValues[2] = currentNums[tempIndx];
+                nextValues[2] = currentNums[tempIndx];
 
+          
             int maxVal = nextValues.Max();
 
             if (nextValues.IndexOf(maxVal) == 0)
@@ -65,7 +69,7 @@ namespace Triangle
             List<int> nums = new List<int>();
             if ((data = _file.ReadLine()) != null)
             {
-                string[] dataArray = data?.Split(' ');
+                string[] dataArray = data.Split(' ');
                 foreach (string num in dataArray)
                 {
                     nums.Add(int.Parse(num));
