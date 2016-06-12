@@ -32,24 +32,25 @@ namespace Triangle
 
             //list of values near current in line
             List<int> nextValues = new List<int> { 0, 0, 0 };
-            if (tempIndx - 1 > 0)
+            
+            if (tempIndx - 1 >= 0)
             {
                 nextValues[0] = currentNums[tempIndx - 1];
             }
             if (tempIndx + 1 < currentNums.Count)
             {
-                nextValues[1] = currentNums[tempIndx + 1];
+                nextValues[2] = currentNums[tempIndx + 1];
             }
-                nextValues[2] = currentNums[tempIndx];
+                nextValues[1] = currentNums[tempIndx];
 
           
             int maxVal = nextValues.Max();
 
-            if (nextValues.IndexOf(maxVal) == 0)
+            if (nextValues.LastIndexOf(maxVal) == 0)
             {
                 tempIndx--;
             }
-            else if (nextValues.IndexOf(maxVal) == 1)
+            if (nextValues.LastIndexOf(maxVal) == 2)
             {
                 tempIndx++;
             }
